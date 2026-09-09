@@ -1,3 +1,6 @@
+spawn_x = x;
+spawn_y = y;
+
 move_speed = 2;
 vertical_speed = 0;
 gravity_force = .25;
