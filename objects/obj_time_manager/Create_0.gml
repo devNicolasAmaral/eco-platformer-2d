@@ -6,3 +6,5 @@ display_set_gui_size(320, 180);
 
 current_recording = [];
 completed_recordings = [];
+max_echoes = 1;
+echo_instances = [];

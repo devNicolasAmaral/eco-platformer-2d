@@ -4,21 +4,32 @@ array_push(current_recording, {
 });
 
 if (cycle_steps_remaining <= 0) {
-    array_push(completed_recordings, current_recording);
+    if (array_length(echo_instances) < max_echoes) {
+        array_push(completed_recordings, current_recording);
 
-    var new_echo = instance_create_layer(
-        obj_player.spawn_x,
-        obj_player.spawn_y,
-        "Instances",
-        obj_echo
-    );
+        var new_echo = instance_create_layer(
+            obj_player.spawn_x,
+            obj_player.spawn_y,
+            "Instances",
+            obj_echo
+        );
 
-    new_echo.recording = current_recording;
-    current_recording = [];
+        new_echo.recording = current_recording;
+        array_push(echo_instances, new_echo);
 
-    with (obj_echo) {
-        playback_index = 0;
+        with (obj_echo) {
+            playback_index = 0;
+        }
+    } else {
+        with (obj_echo) {
+            instance_destroy();
+        }
+
+        completed_recordings = [];
+        echo_instances = [];
     }
+
+    current_recording = [];
 
     with (obj_player) {
         x = spawn_x;
