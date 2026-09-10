@@ -1,4 +1,10 @@
-is_open = obj_pressure_plate.is_pressed;
+is_open = false;
+
+with (obj_pressure_plate) {
+    if (channel_id == other.channel_id && is_pressed) {
+        other.is_open = true
+    }
+}
 
 image_blend = is_open ? c_lime : c_red;
 
