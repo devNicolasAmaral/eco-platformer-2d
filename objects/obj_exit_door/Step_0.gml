@@ -7,5 +7,5 @@ if (
     && place_meeting(x, y, obj_player)
     && keyboard_check_pressed(ord("E"))
 ) {
-    show_debug_message("Fase concluida");
+    room_goto_next();
 }

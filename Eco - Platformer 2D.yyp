@@ -46,6 +46,7 @@
     {"id":{"name":"obj_solid","path":"objects/obj_solid/obj_solid.yy",},},
     {"id":{"name":"obj_time_manager","path":"objects/obj_time_manager/obj_time_manager.yy",},},
     {"id":{"name":"rm_prototype","path":"rooms/rm_prototype/rm_prototype.yy",},},
+    {"id":{"name":"rm_transition_test","path":"rooms/rm_transition_test/rm_transition_test.yy",},},
     {"id":{"name":"msk_player","path":"sprites/msk_player/msk_player.yy",},},
     {"id":{"name":"spr_barrier_placeholder","path":"sprites/spr_barrier_placeholder/spr_barrier_placeholder.yy",},},
     {"id":{"name":"spr_echo_placeholder","path":"sprites/spr_echo_placeholder/spr_echo_placeholder.yy",},},
@@ -58,6 +59,7 @@
   "resourceVersion":"2.0",
   "RoomOrderNodes":[
     {"roomId":{"name":"rm_prototype","path":"rooms/rm_prototype/rm_prototype.yy",},},
+    {"roomId":{"name":"rm_transition_test","path":"rooms/rm_transition_test/rm_transition_test.yy",},},
   ],
   "templateType":"game",
   "TextureGroups":[
