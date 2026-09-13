@@ -4,6 +4,10 @@ var horizontal_movement =  horizontal_input * move_speed;
 visual_scale_x = lerp(visual_scale_x, 1, stretch_return_speed);
 visual_scale_y = lerp(visual_scale_y, 1, stretch_return_speed);
 
+if (ceiling_impact_timer > 0) {
+	ceiling_impact_timer -= 1;
+}
+
 // Movimentação horizontal
 
 if (place_meeting(x + horizontal_movement, y, obj_solid)) {
@@ -17,7 +21,7 @@ if (place_meeting(x + horizontal_movement, y, obj_solid)) {
 x += horizontal_movement;
 
 
-// Movimentação vertical
+// Movimentação vertical e pulo
 
 vertical_speed = min(
 	vertical_speed + gravity_force,
@@ -55,6 +59,8 @@ if (keyboard_check_pressed(ord("W"))
 		true
 	) != noone;
 
+	ceiling_impact_allowed = !ceiling_close;
+
 	if (ceiling_close) {
 		visual_scale_x = 1;
 		visual_scale_y = 1;
@@ -69,11 +75,15 @@ if (keyboard_check_pressed(ord("W"))
 var impact_speed = vertical_speed;
 
 if (place_meeting(x, y + vertical_speed, obj_solid)) {
-	while (!place_meeting(x, y + sign(vertical_speed), obj_solid)) {
-		y += sign(vertical_speed);
-	}
+    if (vertical_speed < 0 && ceiling_impact_allowed) {
+        ceiling_impact_timer = ceiling_impact_duration;
+    }
 
-	vertical_speed = 0;
+    while (!place_meeting(x, y + sign(vertical_speed), obj_solid)) {
+        y += sign(vertical_speed);
+    }
+
+    vertical_speed = 0;
 }
 
 y += vertical_speed;
@@ -109,7 +119,7 @@ if (!was_grounded && is_grounded) {
 
 if (!is_grounded) {
 	sprite_index = spr_ester_jump;
-	if (vertical_speed < 0) {
+	if (vertical_speed < 0 || ceiling_impact_timer > 0) {
 		image_index = 0;
 	} else {
 		image_index = 1;

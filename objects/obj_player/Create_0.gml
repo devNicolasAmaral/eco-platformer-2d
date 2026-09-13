@@ -13,6 +13,10 @@ facing_direction = 1;
 visual_scale_x = 1;
 visual_scale_y = 1;
 
+ceiling_impact_allowed = false;
+ceiling_impact_duration = 5;
+ceiling_impact_timer= 0;
+
 stretch_return_speed = 0.15;
 
 dust_system = part_system_create_layer("Effects", false);
