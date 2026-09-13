@@ -35,6 +35,10 @@ if (cycle_steps_remaining <= 0) {
         x = spawn_x;
         y = spawn_y;
         vertical_speed = 0;
+
+        visual_scale_x = 1;
+        visual_scale_y = 1;
+        facing_index = 0;
     }
 
     cycle_steps_remaining = cycle_duration_steps;

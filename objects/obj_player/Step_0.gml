@@ -1,6 +1,9 @@
 var horizontal_input = keyboard_check(ord("D")) - keyboard_check(ord("A"));
 var horizontal_movement =  horizontal_input * move_speed;
 
+visual_scale_x = lerp(visual_scale_x, 1, stretch_return_speed);
+visual_scale_y = lerp(visual_scale_y, 1, stretch_return_speed);
+
 // Movimentação horizontal
 
 if (place_meeting(x + horizontal_movement, y, obj_solid)) {
@@ -22,6 +25,9 @@ var is_grounded = place_meeting(x, y + 1, obj_solid);
 
 if (keyboard_check_pressed(ord("W")) && is_grounded) {
 	vertical_speed = jump_speed;
+
+	visual_scale_x = 0.6;
+	visual_scale_y = 1.4;
 }
 
 
@@ -34,3 +40,24 @@ if (place_meeting(x, y + vertical_speed, obj_solid)) {
 }
 
 y += vertical_speed;
+
+is_grounded = place_meeting(x, y + 1, obj_solid);
+
+// Controle de animação
+
+if (!is_grounded) {
+	sprite_index = spr_ester_jump;
+	if (vertical_speed < 0) {
+		image_index = 0;
+	} else {
+		image_index = 1;
+	}
+} else if (horizontal_input != 0) {
+	sprite_index = spr_ester_run;
+} else {
+	sprite_index = spr_ester_idle;
+}
+
+if (horizontal_input != 0) {
+	facing_direction = sign(horizontal_input);
+}
