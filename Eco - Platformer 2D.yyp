@@ -12,6 +12,7 @@
   "Folders":[
     {"$GMFolder":"","%Name":"Objects","folderPath":"folders/Objects.yy","name":"Objects","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Controllers","folderPath":"folders/Objects/Controllers.yy","name":"Controllers","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"Effects","folderPath":"folders/Effects.yy","name":"Effects","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Interactables","folderPath":"folders/Objects/Interactables.yy","name":"Interactables","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Player","folderPath":"folders/Objects/Player.yy","name":"Player","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Time","folderPath":"folders/Objects/Time.yy","name":"Time","resourceType":"GMFolder","resourceVersion":"2.0",},
@@ -45,6 +46,7 @@
     {"id":{"name":"obj_pressure_plate","path":"objects/obj_pressure_plate/obj_pressure_plate.yy",},},
     {"id":{"name":"obj_solid","path":"objects/obj_solid/obj_solid.yy",},},
     {"id":{"name":"obj_time_manager","path":"objects/obj_time_manager/obj_time_manager.yy",},},
+    {"id":{"name":"ps_dust","path":"particles/ps_dust/ps_dust.yy",},},
     {"id":{"name":"rm_prototype","path":"rooms/rm_prototype/rm_prototype.yy",},},
     {"id":{"name":"rm_transition_test","path":"rooms/rm_transition_test/rm_transition_test.yy",},},
     {"id":{"name":"msk_player","path":"sprites/msk_player/msk_player.yy",},},

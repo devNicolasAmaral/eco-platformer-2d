@@ -22,14 +22,18 @@ x += horizontal_movement;
 vertical_speed = min(vertical_speed + gravity_force, max_fall_speed);
 
 var is_grounded = place_meeting(x, y + 1, obj_solid);
+var was_grounded = is_grounded;
 
 if (keyboard_check_pressed(ord("W")) && is_grounded) {
 	vertical_speed = jump_speed;
 
 	visual_scale_x = 0.6;
 	visual_scale_y = 1.4;
+
+	part_particles_burst(dust_system, x, y, ps_dust);
 }
 
+var impact_speed = vertical_speed;
 
 if (place_meeting(x, y + vertical_speed, obj_solid)) {
 	while (!place_meeting(x, y + sign(vertical_speed), obj_solid)) {
@@ -42,6 +46,25 @@ if (place_meeting(x, y + vertical_speed, obj_solid)) {
 y += vertical_speed;
 
 is_grounded = place_meeting(x, y + 1, obj_solid);
+
+if (!was_grounded && is_grounded) {
+	var normalized_impact = clamp(
+		impact_speed / max_fall_speed,
+		0,
+		1
+	);
+
+	var impact_ratio = power(normalized_impact, 3);
+
+	visual_scale_x = lerp(1, 1.6, impact_ratio);
+	visual_scale_y = lerp(1, 0.4, impact_ratio);
+
+	if (impact_speed >= max_fall_speed * 0.5) {
+		repeat (2) {
+			part_particles_burst(dust_system, x, y, ps_dust);
+		}
+	}
+}
 
 // Controle de animação
 

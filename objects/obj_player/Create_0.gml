@@ -13,3 +13,5 @@ visual_scale_x = 1;
 visual_scale_y = 1;
 
 stretch_return_speed = 0.15;
+
+dust_system = part_system_create_layer("Effects", false);
