@@ -35,8 +35,8 @@
     "path":"sprites/spr_echo_placeholder/spr_echo_placeholder.yy",
   },
   "spriteMaskId":{
-    "name":"msk_player",
-    "path":"sprites/msk_player/msk_player.yy",
+    "name":"msk_ester",
+    "path":"sprites/msk_ester/msk_ester.yy",
   },
   "visible":true,
 }

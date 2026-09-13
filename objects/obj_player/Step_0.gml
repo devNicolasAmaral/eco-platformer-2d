@@ -19,16 +19,49 @@ x += horizontal_movement;
 
 // Movimentação vertical
 
-vertical_speed = min(vertical_speed + gravity_force, max_fall_speed);
+vertical_speed = min(
+	vertical_speed + gravity_force,
+	max_fall_speed
+);
 
 var is_grounded = place_meeting(x, y + 1, obj_solid);
 var was_grounded = is_grounded;
 
-if (keyboard_check_pressed(ord("W")) && is_grounded) {
-	vertical_speed = jump_speed;
+var jump_has_clearance = collision_rectangle(
+	bbox_left,
+	bbox_top - minimum_jump_clearance,
+	bbox_right,
+	bbox_top - 1,
+	obj_solid,
+	false,
+	true
+) == noone;
 
-	visual_scale_x = 0.6;
-	visual_scale_y = 1.4;
+
+if (keyboard_check_pressed(ord("W"))
+&& is_grounded
+&& jump_has_clearance
+) {
+	vertical_speed = jump_speed;
+	mask_index = msk_ester_jump;
+
+	var ceiling_close = collision_rectangle(
+		bbox_left,
+		bbox_top - 18,
+		bbox_right,
+		bbox_top -1,
+		obj_solid,
+		false,
+		true
+	) != noone;
+
+	if (ceiling_close) {
+		visual_scale_x = 1;
+		visual_scale_y = 1;
+	} else {
+		visual_scale_x = 0.6;
+		visual_scale_y = 1.4;
+	}
 
 	part_particles_burst(dust_system, x, y, ps_dust);
 }
@@ -46,6 +79,12 @@ if (place_meeting(x, y + vertical_speed, obj_solid)) {
 y += vertical_speed;
 
 is_grounded = place_meeting(x, y + 1, obj_solid);
+
+if (is_grounded) {
+	mask_index = msk_ester;
+} else {
+	mask_index = msk_ester_jump;
+}
 
 if (!was_grounded && is_grounded) {
 	var normalized_impact = clamp(
