@@ -1,6 +1,22 @@
+var recorded_hair = [];
+var node_count = array_length(obj_player.hair_nodes);
+
+for (var i = 0; i < node_count; i++) {
+    array_push(recorded_hair, {
+        x: obj_player.hair_nodes[i].position_x,
+        y: obj_player.hair_nodes[i].position_y
+    });
+}
+
 array_push(current_recording, {
     x: obj_player.x,
-    y: obj_player.y
+    y: obj_player.y,
+    sprite: obj_player.sprite_index,
+    frame: obj_player.image_index,
+    dir: obj_player.facing_direction,
+    scale_x: obj_player.visual_scale_x,
+    scale_y: obj_player.visual_scale_y,
+    hair: recorded_hair
 });
 
 if (cycle_steps_remaining <= 0) {
