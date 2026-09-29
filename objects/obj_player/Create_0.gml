@@ -36,11 +36,11 @@ hair_offset_x_right = -6;
 hair_offset_x_left = 4;
 hair_offset_y = -27;
 
-hair_run_offset_x = [4, 4, 4, 4, 4, 4];
+hair_run_offset_x = [2, 2, 2, 2, 2, 2];
 hair_jump_offset_x = [0, -1];
 
-hair_idle_offset_y = [0, -1, -1, 0];
-hair_run_offset_y = [2, -1, 0, 2, -1, 0];
+hair_idle_offset_y = [0, 1, 0, 1];
+hair_run_offset_y = [3, 2, 2, 3, 2, 2];
 
 // --- Inicialização dos Nós do Cabelo ---
 hair_nodes = [];

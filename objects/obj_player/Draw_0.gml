@@ -70,7 +70,7 @@ draw_sprite_ext(
     image_index,
     x,
     y,
-    facing_direction,
+    facing_direction * visual_scale_x,
     visual_scale_y,
     image_angle,
     image_blend,
